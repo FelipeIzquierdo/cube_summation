@@ -4,15 +4,92 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Cube
+ * @package App\Models
+ */
 class Cube extends Model
 {
-    protected $fillable = ['name', 'cell_phone', 'document', 'document_type', 'home_address'];
+    /**
+     * @var array
+     */
+    protected $last_coordinate;
 
-    protected $value_last_coordinate;
+    /**
+     * @var int
+     */
+    protected  $first_coordinate = 1;
 
-    protected static $value_first_coordinate = 1;
+    /**
+     * @var int
+     */
+    protected  $initial_blocks = 0;
 
-    protected static $value_initial_blocks = 0;
+    /**
+     * @var
+     */
+    protected $coordinates ;
 
-    protected $coordinates = array();
+    /**
+     * Cube constructor.
+     * @param $value_last_coordinate
+     */
+    public function __construct($value_last_coordinate)
+    {
+        $this->last_coordinate = $value_last_coordinate;
+        $this->initCoordinates();
+    }
+
+    /**
+     *
+     */
+    public function initCoordinates()
+    {
+        for ($x = $this->first_coordinate; $x <= $this->last_coordinate; $x++)
+        {
+            for ($y = $this->first_coordinate; $y <= $this->last_coordinate; $y++)
+            {
+                for ($z = $this->first_coordinate; $z <= $this->last_coordinate; $z++)
+                {
+                    $this->coordinates[$x][$y][$z] = $this->initial_blocks;
+                }
+            }
+        }
+    }
+
+    /**
+     * @param $x1
+     * @param $y1
+     * @param $z1
+     * @param $x2
+     * @param $y2
+     * @param $z2
+     * @return int
+     */
+    public function cubeQuery($x1, $y1, $z1, $x2, $y2, $z2)
+    {
+        $value = 0;
+        for ($x = $x1; $x <= $x2; $x++)
+        {
+            for ($y = $y1; $y <= $y2; $y++)
+            {
+                for ($z = $z1; $z <= $z2; $z++)
+                {
+                    $value += $this->coordinates[$x][$y][$z];
+                }
+            }
+        }
+        return $value;
+    }
+
+    /**
+     * @param $x
+     * @param $y
+     * @param $z
+     * @param $w
+     */
+    public function updateBlockValue($x, $y, $z, $w)
+    {
+        $this->coordinates[$x][$y][$z] = $w;
+    }
 }
