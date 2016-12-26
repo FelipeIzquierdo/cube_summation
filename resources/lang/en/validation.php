@@ -112,6 +112,10 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+
+        'operations.*'      => 'operations',
+
+    ],
 
 ];

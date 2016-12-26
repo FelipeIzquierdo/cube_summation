@@ -16,4 +16,6 @@ Route::get('/', function () {
 });
 
 Route::get('cubes', 'CubeSummationController@index');
-Route::post('cubes/init_test_cases', 'CubeSummationController@initTestCases')->name('cube.init_test_cases');
+Route::get('cubes/init_test_cases', 'CubeSummationController@initTestCases')->name('cube.init_test_cases');
+
+Route::post('cubes/create',['as'=> 'cube.create', 'uses' =>'CubeSummationController@createCube']);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Cube\CreateRequest;
 use App\Models\Cube;
 use Illuminate\Http\Request;
 
@@ -20,19 +21,15 @@ class CubeSummationController extends Controller
     public function initTestCases(Request $request)
     {
         $this->validate($request, [
-            'testcases' => 'required|numeric|min:1|max:50'
+            'testcases' => 'required|integer|between:1,50'
         ]);
         $this->testcases = $request['testcases'];
-
-        for ($i = 0; $i < $this->testcases; $i++){
-            $n = 4;
-            $m = 4;
-
-            $cube = new Cube($n);
-            $cube->updateBlockValue(1,1,1,3);
-            $cube->updateBlockValue(2,2,2,3);
-            $cube->cubeQuery(1,1,1,2,2,2);
-        }
         return view($this->prefixView.'index')->with(['testcases' => $this->testcases]);
+    }
+
+    public function createCube(CreateRequest $request)
+    {
+
+        dd($request->all());
     }
 }

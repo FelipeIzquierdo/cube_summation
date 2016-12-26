@@ -10,10 +10,12 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Cube extends Model
 {
+
     /**
      * @var array
      */
-    protected $last_coordinate;
+    protected $fillable = ['last_coordinate'];
+
 
     /**
      * @var int
@@ -31,13 +33,19 @@ class Cube extends Model
     protected $coordinates ;
 
     /**
-     * Cube constructor.
-     * @param $value_last_coordinate
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function __construct($value_last_coordinate)
+    public function testCase()
     {
-        $this->last_coordinate = $value_last_coordinate;
-        $this->initCoordinates();
+        return $this->belongsTo(TestCase::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function cubeQueries()
+    {
+        return $this->hasMany(CubeQuery::class);
     }
 
     /**
