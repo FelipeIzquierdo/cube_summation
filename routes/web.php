@@ -15,7 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('cubes', 'CubeSummationController@index');
-Route::get('cubes/init_test_cases', 'CubeSummationController@initTestCases')->name('cube.init_test_cases');
+Route::get('test_cases', 'CubeSummationController@index');
+Route::get('test_cases/show/{test_case}', 'CubeSummationController@showTest')->name('test_cases.show');
 
-Route::post('cubes/create',['as'=> 'cube.create', 'uses' =>'CubeSummationController@createCube']);
+Route::post('test_cases/create', 'CubeSummationController@createTestCase')->name('test_cases.create');
+
+Route::post('test_cases/{test_case}/cubes/create',['as'=> 'cube.create', 'uses' =>'CubeSummationController@createCube']);
+
+Route::post('test_cases/{test_case}/cubes/queries',['as'=> 'cube.queries', 'uses' =>'CubeSummationController@queriesCubes']);

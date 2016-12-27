@@ -16,6 +16,7 @@ class CreateCubesTable extends Migration
         Schema::create('cubes', function (Blueprint $table) {
             $table->increments('id');
             $table->tinyInteger('last_coordinate');
+            $table->tinyInteger('queries_number');
             $table->unsignedInteger('test_case_id');
             $table->foreign('test_case_id')->references('id')->on('test_cases');
             $table->timestamps();

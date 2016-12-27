@@ -14,7 +14,7 @@ class Cube extends Model
     /**
      * @var array
      */
-    protected $fillable = ['last_coordinate'];
+    protected $fillable = ['queries_number', 'last_coordinate'];
 
 
     /**

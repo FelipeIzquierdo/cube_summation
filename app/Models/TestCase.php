@@ -22,4 +22,9 @@ class TestCase extends Model
     {
         return $this->hasMany(Cube::class);
     }
+
+    public function saveTest($data){
+        $this->fill($data);
+        $this->save();
+    }
 }

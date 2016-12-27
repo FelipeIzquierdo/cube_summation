@@ -4,7 +4,7 @@ namespace App\Http\Requests\Cube;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateRequest extends FormRequest
+class QueriesRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'cube.*.queries_number'  => 'integer|required|between:1,1000',
-            'cube.*.last_coordinate' => 'required|integer|between:1,100'
+           'cube.*.*.type'   => 'required',
+            'cube.*.*.values' => 'required'
         ];
     }
 }

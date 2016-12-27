@@ -114,7 +114,8 @@ return [
 
     'attributes' => [
 
-        'operations.*'      => 'operations',
+        'cube.*.queries_number'         => 'Queries number',
+        'cube.*.last_coordinate'        => 'Last coordinate'
 
     ],
 

@@ -9,7 +9,7 @@ class CubeQuery extends Model
     /**
      * @var array
      */
-    protected $fillable = ['x1', 'y1', 'z1', 'x2', 'y2', 'z2', 'w', 'result'];
+    protected $fillable = ['type', 'x1', 'y1', 'z1', 'x2', 'y2', 'z2', 'w', 'result'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

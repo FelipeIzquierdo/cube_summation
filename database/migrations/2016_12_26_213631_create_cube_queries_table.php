@@ -22,7 +22,7 @@ class CreateCubeQueriesTable extends Migration
             $table->tinyInteger('x2')->nullable();
             $table->tinyInteger('y2')->nullable();
             $table->tinyInteger('z2')->nullable();
-            $table->tinyInteger('w')->nullable();
+            $table->float('w')->nullable();
             $table->float('result')->nullable();
             $table->unsignedInteger('cube_id');
             $table->foreign('cube_id')->references('id')->on('cubes');
