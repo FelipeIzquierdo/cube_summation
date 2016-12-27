@@ -9,6 +9,7 @@ use App\Models\CubeQuery;
 use App\Models\TestCase;
 use App\Services\CubeSummationService;
 use Illuminate\Http\Request;
+use Validator;
 
 class CubeSummationController extends Controller
 {
@@ -55,6 +56,14 @@ class CubeSummationController extends Controller
 
     public function queriesCubes(QueriesRequest $request, TestCase $test_case)
     {
+        $validator =  Validator::make($request->all(), [ ]);
+        $errorsCubes = $this->service->validateCubeQueries($test_case, $request->get('cube'), $validator);
+        if ($errorsCubes){
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
         $this->service->saveQueries($request->get('cube'));
         dd($request->all());
     }
