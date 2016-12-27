@@ -65,6 +65,13 @@ class CubeSummationController extends Controller
                 ->withInput();
         }
         $this->service->saveQueries($request->get('cube'));
-        dd($request->all());
+        return redirect()->route('cubes.result', $test_case->id);
+    }
+
+    public function cubesResult(TestCase $test_case)
+    {
+        return view($this->prefixView.'result_cube')->with([
+            'test_case' => $test_case
+        ]);
     }
 }

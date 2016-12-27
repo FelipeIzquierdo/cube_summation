@@ -18,5 +18,10 @@ class CubeQuery extends Model
     {
         return $this->belongsTo(Cube::class);
     }
+
+    public function isQuery()
+    {
+        return $this->type == 'QUERY';
+    }
 }
 

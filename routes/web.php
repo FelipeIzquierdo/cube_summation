@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::get('test_cases', 'CubeSummationController@index');
 Route::get('test_cases/show/{test_case}', 'CubeSummationController@showTest')->name('test_cases.show');
+Route::get('test_cases/{test_case}/cubes', 'CubeSummationController@cubesResult')->name('cubes.result');
 
 Route::post('test_cases/create', 'CubeSummationController@createTestCase')->name('test_cases.create');
 

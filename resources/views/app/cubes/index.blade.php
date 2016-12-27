@@ -45,7 +45,7 @@
                 @else
                     @if (count($errors) > 0)
                         <div class="alert alert-danger">
-                            <strong>Whoops!</strong> {{ trans('adminlte_lang::message.someproblems') }}<br><br>
+                            <strong>Whoops!</strong> <br><br>
                             <ul>
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
@@ -63,7 +63,7 @@
                             <p>1. UPDATE x y z W <br>
                                 2. QUERY  x1 y1 z1 x2 y2 z2 </p>
                             @foreach($test_case->cubes as $key => $cube)
-                                <h3>Test Case  N°{!! 1+$key !!}</h3>
+                                <h3>Test Case  N°{!! 1+$key !!} value N = {!! $cube->last_coordinate !!}</h3>
                                 @foreach(range(1,$cube->queries_number) as $i)
                                     <div class="col-md-12">
                                         <div class="col-md-6">
