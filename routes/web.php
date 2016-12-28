@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'CubeSummationController@index');
 
 Route::get('test_cases', 'CubeSummationController@index');
 Route::get('test_cases/show/{test_case}', 'CubeSummationController@showTest')->name('test_cases.show');
