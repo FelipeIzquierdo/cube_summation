@@ -6,14 +6,14 @@
             @if(empty ($test_case))
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Cube</h3>
+                    <h3 class="box-title">Test Case</h3>
                 </div>
                 {!! Form::open(['route' => 'test_cases.create', 'method' => 'post']) !!}
                     <div class="box-body">
                         {!!  Field::text('tests_number',['ph' => 'Numero casos de pruebas']) !!}
                     </div>
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-primary">Enviar</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 {!! Form::close() !!}
             </div>
@@ -22,7 +22,7 @@
                 @if(!$test_case->cubes->all())
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Cube</h3>
+                            <h3 class="box-title">Cube initialization</h3>
                         </div>
                         {!! Form::open(['route' => ['cube.create',$test_case], 'method' => 'post']) !!}
                         {!! method_field('POST') !!}
@@ -38,7 +38,7 @@
                         @endforeach
                         </div>
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-primary">Enviar</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                         {!! Form::close() !!}
                     </div>
@@ -77,7 +77,7 @@
                             @endforeach
                         </div>
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-primary">Enviar</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                         {!! Form::close() !!}
                     </div>
